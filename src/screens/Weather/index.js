@@ -1,11 +1,10 @@
 import React from 'react';
-import {ContentView, Text} from './styles';
+
+import WeatherDetails from '../../components/Weather/components/Details';
 
 const WeatherScreen = () => {
   return (
-    <ContentView>
-      <Text>WeatherScreen</Text>
-    </ContentView>
+    <WeatherDetails/>
   );
 };
 
