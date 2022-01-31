@@ -1,28 +1,19 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
+//import useLocation from '../hooks/location';
 
 export default function WeatherContainer({children}) {
-  const [userData, setUserData] = useState({});
 
-  useEffect(getUserData, []);
+  //useEffect(getLocationUser(), []);
 
   function typeError(error) {
     const {message} = error;
     if (message) {
       return 'User not found, please check if the email is correct.';
     }
-    consoleBugger(error);
     return 'Try later.';
   }
 
-  function getUserData() {
-    setUserData(user);
-  }
-
-  async function nomeDaFuncao(data) {
-    console.log('data', data);
-  }
-
-  async function nomeDaFuncao(data) {
+  function getLocationUser(data) {
     try {
       console.log('data', data);
       return {
@@ -38,7 +29,6 @@ export default function WeatherContainer({children}) {
   }
 
   return children({
-    userData,
-    nomeDaFuncao,
+    getLocationUser,
   });
 }

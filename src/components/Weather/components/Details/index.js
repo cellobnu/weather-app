@@ -1,12 +1,19 @@
 import React from 'react';
-
+import WeatherContainer from '../../containers/WeatherContainer'
 import {ContentView, Text} from './styles';
 
 const WeatherScreen = () => {
   return (
-    <ContentView>
-      <Text>WeatherScreen Details</Text>
-    </ContentView>
+    <WeatherContainer>
+      {({getLocationUser}) => {
+        const {message} = getLocationUser();
+        return (
+          <ContentView>
+            <Text>{message}</Text>
+          </ContentView>
+        )
+      }}
+    </WeatherContainer>
   );
 };
 
