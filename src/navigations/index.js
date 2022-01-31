@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import SplashScreen from './../screens/Splash';
-import WeatherScreen from './../screens/Weather';
-import WeatherStack from './../navigations/';
+import WeatherStack from './../navigations/WeatherStack';
 
 const Navigator = () => {
 
@@ -18,7 +17,7 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       {/* {isLoading ? <SplashScreen /> : <WeatherStack />} */}
-      <WeatherScreen/>
+      <WeatherStack/>
     </NavigationContainer>
   );
 };
