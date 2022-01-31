@@ -1,11 +1,10 @@
 import React from 'react';
+import Navigator from './navigations';
 
-import WeatherScreen from './screens/Weather';
-import SplashScreen from './screens/Splash';
 
 const App = () => {
   return (
-    <SplashScreen />
+    <Navigator />
   );
 };
 
