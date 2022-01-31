@@ -1,15 +1,18 @@
 {
-  "name": "desafioBuilders",
+  "name": "desafiobuilders",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:clean": "cd android && rm -rf app/build && ./gradlew clean && ..",
     "ios": "react-native run-ios",
+    "ios:clean": "cd ios && rm -rf Pods Podfile.lock && pod install && cd ..",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.11",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "styled-components": "^5.3.3"
