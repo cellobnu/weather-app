@@ -1,32 +1,35 @@
-import {useEffect} from 'react';
-//import useLocation from '../hooks/location';
+import useLocation from '../hooks/location';
 
 export default function WeatherContainer({children}) {
-
-  //useEffect(getLocationUser(), []);
+  
 
   function typeError(error) {
     const {message} = error;
     if (message) {
-      return 'User not found, please check if the email is correct.';
+      return 'Location not found.';
     }
     return 'Try later.';
   }
 
-  function getLocationUser(data) {
+  function getLocationUser() {
     try {
-      console.log('data', data);
+      const myLocation = useLocation();
+
       return {
         message: 'Success!',
         hasError: false,
+        data: myLocation,
       };
     } catch (error) {
       return {
         message: typeError(error),
         hasError: true,
+        data: [],
       };
     }
   }
+
+  
 
   return children({
     getLocationUser,

@@ -6,12 +6,15 @@ const WeatherScreen = () => {
   return (
     <WeatherContainer>
       {({getLocationUser}) => {
-        const {message} = getLocationUser();
-        return (
-          <ContentView>
-            <Text>{message}</Text>
-          </ContentView>
-        )
+        const {data} = getLocationUser();
+        if(data){
+          const {latitude, longitude} = data?.coords
+          return (
+            <ContentView>
+              <Text>{latitude},{longitude}</Text>
+            </ContentView>
+          )
+        }
       }}
     </WeatherContainer>
   );
