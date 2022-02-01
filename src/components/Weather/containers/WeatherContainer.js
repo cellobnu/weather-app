@@ -1,4 +1,5 @@
 import useLocation from '../hooks/location';
+import env from '../../../configs/env';
 
 export default function WeatherContainer({children}) {
   

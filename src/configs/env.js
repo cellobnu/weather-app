@@ -1,3 +1,5 @@
+import {API_WEATHER} from "@env"
+
 export default {
-  apiWeather: process.env.API_WEATHER || '',
+  apiWeather: API_WEATHER || '',
 }
