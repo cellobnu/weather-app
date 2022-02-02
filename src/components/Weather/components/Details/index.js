@@ -33,6 +33,7 @@ const WeatherScreen = () => {
         if(weatherUser?.data){
           const {max, min, temp, name, country, weather} = weatherUser?.data || ''
           const {description, icon} = weather || ''
+          console.log('weather', weather, imageDictionary[icon]);
 
           return (
             <ContentView>
