@@ -4,7 +4,7 @@ import env from '../configs/env';
 const openWeatherService = async (data) => {
   const {latitude, longitude} = data?.coords || ''
   const resp = await axios
-    .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${env.apiWeather}`)
+    .get(`https://api.openweathermap.org/data/2.5/weather?lang=pt_br&lat=${latitude}&lon=${longitude}&appid=${env.apiWeather}`)
     .then(
       (response) => {
         return {

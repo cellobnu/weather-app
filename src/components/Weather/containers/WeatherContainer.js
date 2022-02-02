@@ -5,18 +5,24 @@ const WeatherContainer = ({children, locationCurrent}) =>{
     
   const [weatherUser, setWeatherUser] = useState({})
 
-  const getLocationUser = async () =>{
+  const convertTemp = {
+    kelvinToCelsius: function kToC(k) {
+      return Math.round(k - 273.15);
+    },
+  };
+
+  const getLocationUser = async (locationCurrent) =>{
     try {
       
       if(locationCurrent){
         const {data} = await openWeatherService(locationCurrent)
         const weather = {
-          max: data.main.temp_max, 
-          min: data.main.temp_max,
-          temp: data.main.temp,
+          max: convertTemp.kelvinToCelsius(data.main.temp_max), 
+          min: convertTemp.kelvinToCelsius(data.main.temp_max),
+          temp: convertTemp.kelvinToCelsius(data.main.temp),
           name: data.name,
           country: data.sys.country,
-          weather: data.weather
+          weather: data.weather[0]
         }
 
         return {

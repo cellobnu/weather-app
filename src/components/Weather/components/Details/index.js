@@ -1,31 +1,53 @@
 import React from 'react';
 import WeatherContainer from '../../containers/WeatherContainer'
 import useLocation from './../../../../services/location';
+import imageDictionary from './../../../../configs/imageDictionary';
 
-import {ContentView, CountWeather, TempText, NameCountryText, MaxMinText, Text} from './styles';
+
+import {
+  ContentView, 
+  ContentWeather, 
+  TempContent,
+  TempText, 
+  ImagemTemp,
+  NameCountryText, 
+  MaxMinText, 
+  Text,
+  TextMain,
+  TextDescription,
+  ButtonUpdate,
+  IconBackFontAwesome5
+} from './styles';
 
 const WeatherScreen = () => {
   const locationCurrent = useLocation()
 
+  const handleUpdate = async (getLocationUser) => {
+    const {message, hasError} = await getLocationUser(locationCurrent);
+    hasError ? alert(message) : alert(message);
+  };
+
   return (
     <WeatherContainer locationCurrent={locationCurrent}>
-      {({weatherUser}) => {
+      {({weatherUser, getLocationUser}) => {
         if(weatherUser?.data){
           const {max, min, temp, name, country, weather} = weatherUser?.data || ''
-          console.log('weather', weather);
-          const weatherDescription = weather[0].description
+          const {description, icon} = weather || ''
+
           return (
             <ContentView>
-              
-              <CountWeather>
-                <NameCountryText>{name}-{country}</NameCountryText>
-                <TempText>{temp} Cº</TempText>
-                <MaxMinText>Máx.:{max} - Min.:{min}</MaxMinText>
-                <Text>{weatherDescription}</Text>
-              </CountWeather>
-              
-              
-              
+              <ContentWeather>
+                <TempContent>
+                  <ImagemTemp source={imageDictionary[icon]} />  
+                </TempContent>
+                <NameCountryText>{name} - {country}</NameCountryText>
+                <TempText>{temp}°</TempText>
+                <MaxMinText>Máx.:{max}° - Mín.:{min}°</MaxMinText>
+                <TextDescription>{description}</TextDescription>
+                <ButtonUpdate onPress={() => handleUpdate(getLocationUser)}>
+                  <IconBackFontAwesome5 name="sync-alt" />
+                </ButtonUpdate>
+              </ContentWeather>
             </ContentView>
           )
         }else{
