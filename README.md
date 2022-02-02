@@ -24,10 +24,13 @@ Será muito bem valorizado:
 - Interface
 - Testes
 
-## ⚙️ Tecnologias
+## ⚙️ Frameworks / Bibliotecas
 
 - [React Native](https://reactnative.dev/)
 - [Axios](https://github.com/axios/axios)
+- [Geolocation Service] (https://github.com/Agontuk/react-native-geolocation-service)
+- [Vector Icons] (https://github.com/oblador/react-native-vector-icons)
+- [Styled Components] (https://styled-components.com/)
 
 #### De padronização no código
 

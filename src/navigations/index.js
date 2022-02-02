@@ -16,8 +16,7 @@ const Navigator = () => {
 
   return (
     <NavigationContainer>
-      {/* {isLoading ? <SplashScreen /> : <WeatherStack />} */}
-      <WeatherStack/>
+      {isLoading ? <SplashScreen /> : <WeatherStack />}
     </NavigationContainer>
   );
 };
