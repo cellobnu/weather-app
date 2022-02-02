@@ -1,38 +1,54 @@
-import useLocation from '../hooks/location';
-import env from '../../../configs/env';
+import {useState, useEffect} from 'react';
+import openWeatherService from './../../../services/api-openweather';
 
-export default function WeatherContainer({children}) {
-  
+const WeatherContainer = ({children, locationCurrent}) =>{
+    
+  const [weatherUser, setWeatherUser] = useState({})
 
-  function typeError(error) {
-    const {message} = error;
-    if (message) {
-      return 'Location not found.';
-    }
-    return 'Try later.';
-  }
-
-  function getLocationUser() {
+  const getLocationUser = async () =>{
     try {
-      const myLocation = useLocation();
+      
+      if(locationCurrent){
+        const {data} = await openWeatherService(locationCurrent)
+        const weather = {
+          max: data.main.temp_max, 
+          min: data.main.temp_max,
+          temp: data.main.temp,
+          name: data.name,
+          country: data.sys.country,
+          weather: data.weather
+        }
 
-      return {
-        message: 'Success!',
-        hasError: false,
-        data: myLocation,
-      };
+        return {
+          message: 'Success!',
+          hasError: false,
+          data: weather,
+        };
+      }
+      
     } catch (error) {
       return {
-        message: typeError(error),
+        message: error,
         hasError: true,
         data: [],
       };
     }
   }
 
+  const callInit = async () => {
+    const result = await getLocationUser(locationCurrent);
+    setWeatherUser(result);
+  };
+
   
+  useEffect(() => {
+    callInit()
+  }, [locationCurrent]);
+
 
   return children({
-    getLocationUser,
+    weatherUser,
+    getLocationUser
   });
 }
+export default WeatherContainer

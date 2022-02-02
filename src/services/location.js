@@ -2,9 +2,9 @@ import {useEffect, useState} from 'react';
 import {Alert, Platform, PermissionsAndroid} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
-export default function useLocation() {
+const useLocation = () => {
 
-  const [myLocation, setMylocation] = useState({})
+  const [myLocationCurrent, setMyLocationCurrent] = useState({});
 
   async function locationPermission() {
     if (Platform.OS === 'ios') {
@@ -35,7 +35,7 @@ export default function useLocation() {
       if (hasLocationPermission) {
         Geolocation.getCurrentPosition(
           (position) => {
-            setMylocation(position) 
+            setMyLocationCurrent(position) 
           },
           (error) => {
             // See error code charts below.
@@ -57,8 +57,9 @@ export default function useLocation() {
       await getLocation();
     };
     getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return myLocation
+  return myLocationCurrent
 }
+
+export default useLocation
