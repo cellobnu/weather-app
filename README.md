@@ -1,6 +1,12 @@
 # WeatherApp
 Um aplicativo de clima que exibe dados climáticos da região do usuário
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/5132488/152254570-40434443-8a7b-4978-96fd-84d7ecb74d2e.png" width="150px">
+  <img src="https://user-images.githubusercontent.com/5132488/152254567-d3af3a6f-e5b2-4316-92a5-f1c5a632e1e0.png" width="150px">
+</div>
+
+
 ## 💼 Sobre o projeto
 
 Requisitos:
