@@ -56,9 +56,13 @@ Será muito bem valorizado:
 $ git clone https://github.com/cellobnu/weather-app.git && cd weather-app
 ```
 
-# Faça uma cópia de '.env.example' para '.env'
-# Coloque sua credencial da API de clima (Weather API)
+**Faça uma cópia de '.env.example' para '.env'**
+
+Coloque sua credencial da API de clima (Weather API)
+
+```bash
 $ cp .env.example .env
+```
 
 1. Utlizando yarn
 
